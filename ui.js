@@ -33,6 +33,33 @@ class UI {
         `;
     }
 
+    //Show user repos
+    showRepos(repos) {
+        let outPut = '';
+
+        repos.forEach(function(repo) {
+            outPut += `
+                <div calss="card card-body mb-2">
+                    <div calss="row">
+                        <div class="col-md-6">
+                            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="badge badge-primary mb-2">Stars:${repos.stargazers_count}</span>
+                            <span class="badge badge-secondary mb-2">Watcher:${repos.watchers_count}</span>
+                            <span class="badge badge-success mb-2">Forks:${repos.forks_count}</span>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            `;
+        });
+
+        //Output repos
+        document.getElementById('repos').innerHTML = outPut;
+    }
+
     //Clear forfile
     clearProfile() {
         this.profile.innerHTML = '';
